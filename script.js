@@ -21,13 +21,14 @@ function getHumanChoice() {
   return humanDraw.toLowerCase();
 }
 
+// play round logic
 function playRound(humanChoice, computerChoice) {
-  humanChoice.toLowerCase();
+  humanChoice = humanChoice.toLowerCase();
 
   if (humanChoice === computerChoice) {
     console.log("It's a tie! Both chose " + humanChoice);
   } else if (
-    (humanChoice === "rock" && computerChoice === "scsissors") ||
+    (humanChoice === "rock" && computerChoice === "scissors") ||
     (humanChoice === "paper" && computerChoice === "rock") ||
     (humanChoice === "scissors" && computerChoice === "paper")
   ) {
@@ -44,5 +45,10 @@ const computerSelection = getComputerChoice();
 
 playRound(humanSelection, computerSelection);
 
-// testing
-console.log(getHumanChoice());
+// plays five rounds
+function playGame() {
+  for (let i = 1; i <= 5; i++) {
+    playRound;
+  }
+  return `Human score: ${humanScore}, Computer score: ${computerScore}`;
+}
