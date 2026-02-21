@@ -18,37 +18,45 @@ function getComputerChoice() {
 // returns the human's choice
 function getHumanChoice() {
   let humanDraw = window.prompt("Enter rock, paper, or scissors:");
-  return humanDraw.toLowerCase();
+  return humanDraw ? humanDraw.toLowerCase() : "";
 }
 
 // play round logic
 function playRound(humanChoice, computerChoice) {
-  humanChoice = humanChoice.toLowerCase();
+  if (!humanChoice) return;
 
   if (humanChoice === computerChoice) {
-    console.log("It's a tie! Both chose " + humanChoice);
+    console.log(`It's a tie! Both chose ${humanChoice}`);
   } else if (
     (humanChoice === "rock" && computerChoice === "scissors") ||
     (humanChoice === "paper" && computerChoice === "rock") ||
     (humanChoice === "scissors" && computerChoice === "paper")
   ) {
     humanScore++;
-    console.log("You win! " + humanChoice + " beats " + computerChoice);
+    console.log(`You win! ${humanChoice} beats ${computerChoice}`);
   } else {
     computerScore++;
-    console.log("You lose! " + computerChoice + " beats " + humanChoice);
+    console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
   }
 }
-
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-playRound(humanSelection, computerSelection);
 
 // plays five rounds
 function playGame() {
   for (let i = 1; i <= 5; i++) {
-    playRound;
+    console.log(`--- Round ${i} ---`);
+    // We get FRESH choices every time the loop runs
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+
+    // We call the function with parentheses and arguments
+    playRound(humanSelection, computerSelection);
   }
-  return `Human score: ${humanScore}, Computer score: ${computerScore}`;
+
+  console.log("--- GAME OVER ---");
+  console.log(
+    `Final Result - Human: ${humanScore} | Computer: ${computerScore}`,
+  );
 }
+
+// calling the game
+playGame();
