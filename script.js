@@ -1,11 +1,17 @@
 function getComputerChoice() {
-  draw = Math.floor(Math.random() * 3);
-  if (draw === 0) {
-    draw = "rock";
-  } else if (draw === 1) {
-    draw = "paper";
+  let computerDraw = Math.floor(Math.random() * 3);
+  if (computerDraw === 0) {
+    computerDraw = "rock";
+  } else if (computerDraw === 1) {
+    computerDraw = "paper";
   } else {
-    draw = "scissors";
+    computerDraw = "scissors";
   }
-  return draw;
+  return computerDraw;
 }
+
+function getHumanChoice() {
+  let humanDraw = window.prompt("What do you draw?").toLowerCase();
+  return humanDraw;
+}
+console.log(getHumanChoice());
